@@ -54,7 +54,7 @@ wtf:
         width: 1
       refreshInterval: 30
     todoist:
-      apiKey: "a8fe9a349829496e3b6435dc99c3e2ac22e8278d"
+      apiKey: ""
       enabled: true
       position:
         top: 0
@@ -88,7 +88,7 @@ wtf:
         width: 1
       refreshInterval: 8
       repositories:
-      - "/Users/ccallan/work/pennmutual-static"
+      - ""
     spotify:
       enabled: true
       position:
