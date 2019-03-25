@@ -1,0 +1,2 @@
+to symlink:
+ln -s $(pwd)/location-in.repo ~/path/on/machine
