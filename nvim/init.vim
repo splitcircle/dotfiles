@@ -125,7 +125,7 @@ call plug#begin('~/.config/nvim/plugged')
         \   'active': {
         \       'left': [ [ 'mode', 'paste' ],
         \               [ 'gitbranch' ],
-        \               [ 'readonly', 'filetype', 'filename' ]],
+        \               [ 'readonly', 'filetype', 'filename', 'fliptable' ]],
         \       'right': [ [ 'percent' ], [ 'lineinfo' ],
         \               [ 'fileformat', 'fileencoding' ],
         \               [ 'linter_errors', 'linter_warnings' ]]
@@ -147,6 +147,9 @@ call plug#begin('~/.config/nvim/plugged')
         \       'fileformat': 'LightlineFileFormat',
         \       'filetype': 'LightlineFileType',
         \       'gitbranch': 'LightlineGitBranch'
+        \   },
+        \   'component': {
+        \       'fliptable': '(╯°□°）╯︵ ┻━┻'
         \   },
         \   'tabline': {
         \       'left': [ [ 'tabs' ] ],
