@@ -62,7 +62,7 @@ call plug#begin('~/.config/nvim/plugged')
     " set termguicolors
 
     set number " show line numbers
-    " set cursorline
+    set cursorline
     set wrap " turn on line wrapping
     set wrapmargin=8 " wrap lines when coming within n characters from side
     set linebreak " set soft wrapping
