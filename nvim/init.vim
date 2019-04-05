@@ -58,7 +58,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'yuttie/hydrangea-vim'
     Plug 'KKPMW/sacredforest-vim'
     Plug 'patstockwell/vim-monokai-tasty'
-
+    Plug 'nightsense/snow'
     " set termguicolors
 
     set number " show line numbers
@@ -103,11 +103,6 @@ call plug#begin('~/.config/nvim/plugged')
     set showbreak=↪
 
     " set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
-    " switch cursor to line when in insert mode, and block when not
-    set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-    \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-    \,sm:block-blinkwait175-blinkoff150-blinkon175
-
     if (has("termguicolors"))
       set termguicolors
     endif
@@ -121,7 +116,7 @@ call plug#begin('~/.config/nvim/plugged')
         " Plug 'nicknisi/vim-base16-lightline'
         Plug 'felixjung/vim-base16-lightline'
         let g:lightline = {
-        \   'colorscheme': 'monokai_tasty',
+        \   'colorscheme': 'snow_dark',
         \   'active': {
         \       'left': [ [ 'mode', 'paste' ],
         \               [ 'gitbranch' ],
@@ -397,6 +392,8 @@ call plug#begin('~/.config/nvim/plugged')
 
     " add end, endif, etc. automatically
     Plug 'tpope/vim-endwise'
+
+    Plug 'RRethy/vim-hexokinase'
 
     " a simple tool for presenting slides in vim based on text files
     Plug 'sotte/presenting.vim', { 'for': 'markdown' }
@@ -752,7 +749,13 @@ call plug#end()
     set t_Co=256
     " colorscheme inkstained
     " colorscheme hydrangea
-    colorscheme vim-monokai-tasty
+    " colorscheme vim-monokai-tasty
+    if strftime('%H') >= 7 && strftime('%H') < 19
+      set background=light
+    else
+      set background=dark
+    endif
+    colorscheme snow
 
     if filereadable(expand("~/.vimrc_background"))
         let base16colorspace=256

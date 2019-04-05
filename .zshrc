@@ -10,6 +10,7 @@ source "/src/github.com/sachaos/todoist/todoist_functions.sh"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+[ -n "$PS1" ] && sh ~/.config/nvim/plugged/snow/shell/snow_dark.sh
 ZSH_THEME="agnoster"
 
 # up
