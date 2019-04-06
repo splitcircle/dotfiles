@@ -277,22 +277,15 @@ call plug#begin('~/.config/nvim/plugged')
     " enable . command in visual mode
     vnoremap . :normal .<cr>
 
-    map <silent> <C-h> :call functions#WinMove('h')<cr>
-    map <silent> <C-j> :call functions#WinMove('j')<cr>
-    map <silent> <C-k> :call functions#WinMove('k')<cr>
-    map <silent> <C-l> :call functions#WinMove('l')<cr>
-
     map <leader>wc :wincmd q<cr>
 
     " move line mappings
-    " ∆ is <A-j> on macOS
-    " ˚ is <A-k> on macOS
-    nnoremap ∆ :m .+1<cr>==
-    nnoremap ˚ :m .-2<cr>==
-    inoremap ∆ <Esc>:m .+1<cr>==gi
-    inoremap ˚ <Esc>:m .-2<cr>==gi
-    vnoremap ∆ :m '>+1<cr>gv=gv
-    vnoremap ˚ :m '<-2<cr>gv=gv
+    nnoremap <silent> <C-j> :m .+1<cr>==
+    nnoremap <silent> <C-k> :m .-2<cr>==
+    inoremap <silent> <C-j> <Esc>:m .+1<cr>==gi
+    inoremap <silent> <C-k> <Esc>:m .-2<cr>==gi
+    vnoremap <silent> <C-j> :m '>+1<cr>gv=gv
+    vnoremap <silent> <C-k> :m '<-2<cr>gv=gv
 
     vnoremap $( <esc>`>a)<esc>`<i(<esc>
     vnoremap $[ <esc>`>a]<esc>`<i[<esc>
