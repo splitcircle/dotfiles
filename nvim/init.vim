@@ -51,14 +51,12 @@ call plug#begin('~/.config/nvim/plugged')
 " Appearance {{{
     " colorscheme
     Plug 'felixhummel/setcolors.vim'
-    " Plug 'flazz/vim-colorschemes'
-    " Plug 'srcery-colors/srcery-vim'
-    " Plug 'junegunn/seoul256.vim'
     Plug 'yuttie/inkstained-vim'
     Plug 'yuttie/hydrangea-vim'
     Plug 'KKPMW/sacredforest-vim'
     Plug 'patstockwell/vim-monokai-tasty'
     Plug 'nightsense/snow'
+    Plug 'ayu-theme/ayu-vim'
     " set termguicolors
 
     set number " show line numbers
@@ -116,7 +114,7 @@ call plug#begin('~/.config/nvim/plugged')
         " Plug 'nicknisi/vim-base16-lightline'
         Plug 'felixjung/vim-base16-lightline'
         let g:lightline = {
-        \   'colorscheme': 'snow_dark',
+        \   'colorscheme': 'ayu',
         \   'active': {
         \       'left': [ [ 'mode', 'paste' ],
         \               [ 'gitbranch' ],
@@ -743,12 +741,14 @@ call plug#end()
     " colorscheme inkstained
     " colorscheme hydrangea
     " colorscheme vim-monokai-tasty
-    if strftime('%H') >= 7 && strftime('%H') < 19
-      set background=light
+    if strftime('%H') >= 7 && strftime('%H') < 11
+      let ayucolor="light"
+    elseif strftime('%H') >= 11 && strftime('%H') < 7
+      let ayucolor="mirage"
     else
-      set background=dark
+      let ayucolor="dark"
     endif
-    colorscheme snow
+    colorscheme ayu
 
     if filereadable(expand("~/.vimrc_background"))
         let base16colorspace=256
