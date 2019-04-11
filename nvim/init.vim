@@ -57,7 +57,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'patstockwell/vim-monokai-tasty'
     Plug 'nightsense/snow'
     Plug 'ayu-theme/ayu-vim'
-    " set termguicolors
+    set termguicolors
 
     set number " show line numbers
     set cursorline
@@ -474,6 +474,8 @@ call plug#begin('~/.config/nvim/plugged')
 
     " NERDTree {{{
         Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+        " close NERDTree after a file is opened
+        let g:NERDTreeQuitOnOpen=1
         Plug 'Xuyuanp/nerdtree-git-plugin'
         Plug 'ryanoasis/vim-devicons'
         Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
