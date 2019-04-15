@@ -384,10 +384,7 @@ call plug#begin('~/.config/nvim/plugged')
     " add end, endif, etc. automatically
     Plug 'tpope/vim-endwise'
 
-    Plug 'RRethy/vim-hexokinase'
-
-    " a simple tool for presenting slides in vim based on text files
-    Plug 'sotte/presenting.vim', { 'for': 'markdown' }
+    Plug 'ludovicchabant/vim-gutentags'
 
     " Fancy startup screen for vim {{{
     Plug 'mhinz/vim-startify'
