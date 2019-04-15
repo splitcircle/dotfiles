@@ -1,4 +1,3 @@
-
 call plug#begin('~/.config/nvim/plugged')
 
 " General {{{
@@ -340,6 +339,9 @@ call plug#begin('~/.config/nvim/plugged')
     " Plug 'wincent/terminus'
     " substitute, search, and abbreviate multiple variants of a word
     Plug 'tpope/vim-abolish'
+
+    Plug 'junegunn/vim-emoji'
+    set completefunc=emoji#complete
 
     " search inside files using ripgrep. This plugin provides an Ack command.
     Plug 'wincent/ferret'
@@ -754,6 +756,3 @@ call plug#end()
 " }}}
 
 " vim:set foldmethod=marker foldlevel=0
-
-
-
