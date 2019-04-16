@@ -342,7 +342,7 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'junegunn/vim-emoji'
     set completefunc=emoji#complete
-
+     
     " search inside files using ripgrep. This plugin provides an Ack command.
     Plug 'wincent/ferret'
 
@@ -618,14 +618,38 @@ call plug#begin('~/.config/nvim/plugged')
         let g:ale_javascript_prettier_use_local_config = 1
         let g:ale_fix_on_save = 0
     " }}}
-
-    " UltiSnips {{{
-        Plug 'SirVer/ultisnips' " Snippets plugin
-        let g:UltiSnipsExpandTrigger="<tab>"
-    " }}}
     
     " CoC {{{
-        Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
+      Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
+     " Use <C-l> for trigger snippet expand.
+      imap <C-l> <Plug>(coc-snippets-expand)
+
+      " Use <C-j> for select text for visual placeholder of snippet.
+      vmap <C-a> <Plug>(coc-snippets-select)
+
+      " Use <C-j> for jump to next placeholder, it's default of coc.nvim
+      let g:coc_snippet_next = '<c-a>'
+
+      " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+      let g:coc_snippet_prev = '<c-o>'
+
+      " Use <C-j> for both expand and jump (make expand higher priority.)
+      imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+      inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? coc#rpc#request('doKeymap', ['snippets-expand-jump','']) :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+      function! s:check_back_space() abort
+        let col = col('.') - 1
+        return !col || getline('.')[col - 1]  =~# '\s'
+      endfunction
+
+      let g:coc_snippet_next = '<tab>'
+
+      Plug 'honza/vim-snippets'
     " }}}
 
 " }}}
