@@ -749,13 +749,6 @@ call plug#end()
     " colorscheme vim-monokai-tasty
     colorscheme seoul256
 
-    if filereadable(expand("~/.vimrc_background"))
-        let base16colorspace=256
-        source ~/.vimrc_background
-    else
-        let g:onedark_termcolors=16
-        let g:onedark_terminal_italics=1
-    endif
     syntax on
     filetype plugin indent on
     " make the highlighting of tabs and other non-text less annoying
