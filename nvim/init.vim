@@ -56,6 +56,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'patstockwell/vim-monokai-tasty'
     Plug 'nightsense/snow'
     Plug 'ayu-theme/ayu-vim'
+    Plug 'junegunn/seoul256.vim'
     set termguicolors
 
     set number " show line numbers
@@ -113,7 +114,7 @@ call plug#begin('~/.config/nvim/plugged')
         " Plug 'nicknisi/vim-base16-lightline'
         Plug 'felixjung/vim-base16-lightline'
         let g:lightline = {
-        \   'colorscheme': 'ayu',
+        \   'colorscheme': 'seoul256',
         \   'active': {
         \       'left': [ [ 'mode', 'paste' ],
         \               [ 'gitbranch' ],
@@ -648,8 +649,6 @@ call plug#begin('~/.config/nvim/plugged')
       endfunction
 
       let g:coc_snippet_next = '<tab>'
-
-      Plug 'honza/vim-snippets'
     " }}}
 
 " }}}
@@ -748,14 +747,7 @@ call plug#end()
     " colorscheme inkstained
     " colorscheme hydrangea
     " colorscheme vim-monokai-tasty
-    if strftime('%H') >= 7 && strftime('%H') < 11
-      let ayucolor="light"
-    elseif strftime('%H') >= 11 && strftime('%H') < 7
-      let ayucolor="mirage"
-    else
-      let ayucolor="dark"
-    endif
-    colorscheme ayu
+    colorscheme seoul256
 
     if filereadable(expand("~/.vimrc_background"))
         let base16colorspace=256
