@@ -12,6 +12,8 @@ source "/src/github.com/sachaos/todoist/todoist_functions.sh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="agnoster"
 
+alias v=nvim
+
 # up
   function up_widget() {
     BUFFER="cd .."
@@ -29,23 +31,20 @@ ZSH_THEME="agnoster"
   zle -N goto_home
   bindkey "^h" goto_home
 
-alias v=nvim
+# clear
+  function clear_out() {
+    BUFFER="clear"
+    zle end-of-line
+    zle accept-line
+  }
+  zle -N clear_out
+  bindkey "^c" clear_out
 
-function colorband() {
-  awk 'BEGIN{
-  s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;
-  for (colnum = 0; colnum<77; colnum++) {
-    r = 255-(colnum*255/76);
-    g = (colnum*510/76);
-    b = (colnum*255/76);
-    if (g>255) g = 510-g;
-      printf "\033[48;2;%d;%d;%dm", r,g,b;
-      printf "\033[38;2;%d;%d;%dm", 255-r,255-g,255-b;
-      printf "%s\033[0m", substr(s,colnum+1,1);
-    }
-    printf "\n";
-  }'
-}
+# make and cd
+  function md() {
+    mkdir -p $1
+    cd $1
+  }
 # ************************************************************************
 # CARE DASHBOARD START
 # List of accounts to read the last tweet from, comma separated
