@@ -707,6 +707,10 @@ call plug#begin('~/.config/nvim/plugged')
         Plug 'tpope/vim-fireplace'
         
     " }}}
+    
+    " Rust {{{
+        Plug 'rust-lang/rust.vim'
+    " }}}
 
 
     " Styles {{{
