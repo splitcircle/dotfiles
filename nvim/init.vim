@@ -111,8 +111,6 @@ call plug#begin('~/.config/nvim/plugged')
 
     " LightLine {{{
         Plug 'itchyny/lightline.vim'
-        " Plug 'nicknisi/vim-base16-lightline'
-        Plug 'felixjung/vim-base16-lightline'
         let g:lightline = {
         \   'colorscheme': 'seoul256',
         \   'active': {
