@@ -339,9 +339,9 @@ call plug#begin('~/.config/nvim/plugged')
     " substitute, search, and abbreviate multiple variants of a word
     Plug 'tpope/vim-abolish'
 
-    Plug 'junegunn/vim-emoji'
-    set completefunc=emoji#complete
-     
+    Plug 'itchyny/calendar.vim'
+    let g:calendar_google_calendar = 1
+
     " search inside files using ripgrep. This plugin provides an Ack command.
     Plug 'wincent/ferret'
 
