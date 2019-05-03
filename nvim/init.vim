@@ -57,6 +57,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nightsense/snow'
     Plug 'ayu-theme/ayu-vim'
     Plug 'junegunn/seoul256.vim'
+    Plug 'liuchengxu/space-vim-theme'
     set termguicolors
 
     set number " show line numbers
@@ -109,10 +110,12 @@ call plug#begin('~/.config/nvim/plugged')
     " highlight conflicts
     match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
+    Plug 'sainnhe/lightline_foobar.vim'
+
     " LightLine {{{
         Plug 'itchyny/lightline.vim'
         let g:lightline = {
-        \   'colorscheme': 'hydrangea',
+        \   'colorscheme': 'space_vim_dark',
         \   'active': {
         \       'left': [ [ 'mode', 'paste' ],
         \               [ 'gitbranch' ],
@@ -747,9 +750,12 @@ call plug#end()
     " colorscheme japanesque
     set t_Co=256
     " colorscheme inkstained
-    colorscheme hydrangea
+    " colorscheme hydrangea
     " colorscheme vim-monokai-tasty
     " colorscheme seoul256
+    
+    set background=dark
+    colorscheme space_vim_theme
 
     syntax on
     filetype plugin indent on
