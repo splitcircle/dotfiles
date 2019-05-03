@@ -112,7 +112,7 @@ call plug#begin('~/.config/nvim/plugged')
     " LightLine {{{
         Plug 'itchyny/lightline.vim'
         let g:lightline = {
-        \   'colorscheme': 'inkstained',
+        \   'colorscheme': 'hydrangea',
         \   'active': {
         \       'left': [ [ 'mode', 'paste' ],
         \               [ 'gitbranch' ],
@@ -746,8 +746,8 @@ call plug#end()
     " that the colorschemes have been loaded
     " colorscheme japanesque
     set t_Co=256
-    colorscheme inkstained
-    " colorscheme hydrangea
+    " colorscheme inkstained
+    colorscheme hydrangea
     " colorscheme vim-monokai-tasty
     " colorscheme seoul256
 
