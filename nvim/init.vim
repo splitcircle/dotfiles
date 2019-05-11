@@ -193,13 +193,13 @@ call plug#begin('~/.config/nvim/plugged')
             let l:counts = ale#statusline#Count(bufnr(''))
             let l:all_errors = l:counts.error + l:counts.style_error
             let l:all_non_errors = l:counts.total - l:all_errors
-            return l:counts.total == 0 ? '' : '⚠ ' . printf('%d', all_non_errors)
+            return l:counts.total == 0 ? '' : '⚠️ ' . printf('%d', all_non_errors)
         endfunction
 
         function! LightlineLinterErrors() abort
             let l:counts = ale#statusline#Count(bufnr(''))
             let l:all_errors = l:counts.error + l:counts.style_error
-            return l:counts.total == 0 ? '' : '✖ ' . printf('%d', all_errors)
+            return l:counts.total == 0 ? '' : '❌ ' . printf('%d', all_errors)
         endfunction
 
         function! LightlineLinterOk() abort
@@ -600,10 +600,10 @@ call plug#begin('~/.config/nvim/plugged')
         let g:ale_set_highlights = 0
         let g:ale_change_sign_column_color = 0
         let g:ale_sign_column_always = 1
-        let g:ale_sign_error = '✖'
-        let g:ale_sign_warning = '⚠'
-        let g:ale_echo_msg_error_str = '✖'
-        let g:ale_echo_msg_warning_str = '⚠'
+        let g:ale_sign_error = '❌'
+        let g:ale_sign_warning = '⚠️'
+        let g:ale_echo_msg_error_str = '❌'
+        let g:ale_echo_msg_warning_str = ''
         let g:ale_echo_msg_format = '%severity% %s% [%linter%% code%]'
         " let g:ale_completion_enabled = 1
 
