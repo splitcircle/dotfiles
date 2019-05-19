@@ -235,6 +235,9 @@ call plug#begin('~/.config/nvim/plugged')
     " remap esc
     inoremap jk <esc>
 
+    " shortcut to terminal buffer
+    map <leader>` :terminal<cr>
+
     " shortcut to save
     nmap <leader>, :w<cr>
 
