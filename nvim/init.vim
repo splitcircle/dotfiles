@@ -110,118 +110,49 @@ call plug#begin('~/.config/nvim/plugged')
     " highlight conflicts
     match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-    Plug 'sainnhe/lightline_foobar.vim'
+    Plug 'rbong/vim-crystalline'
 
-    " LightLine {{{
-        Plug 'itchyny/lightline.vim'
-        let g:lightline = {
-        \   'colorscheme': 'space_vim_dark',
-        \   'active': {
-        \       'left': [ [ 'mode', 'paste' ],
-        \               [ 'gitbranch' ],
-        \               [ 'readonly', 'filetype', 'filename', 'fliptable' ]],
-        \       'right': [ [ 'percent' ], [ 'lineinfo' ],
-        \               [ 'fileformat', 'fileencoding' ],
-        \               [ 'linter_errors', 'linter_warnings' ]]
-        \   },
-        \   'component_expand': {
-        \       'linter': 'LightlineLinter',
-        \       'linter_warnings': 'LightlineLinterWarnings',
-        \       'linter_errors': 'LightlineLinterErrors',
-        \       'linter_ok': 'LightlineLinterOk'
-        \   },
-        \   'component_type': {
-        \       'readonly': 'error',
-        \       'linter_warnings': 'warning',
-        \       'linter_errors': 'error'
-        \   },
-        \   'component_function': {
-        \       'fileencoding': 'LightlineFileEncoding',
-        \       'filename': 'LightlineFileName',
-        \       'fileformat': 'LightlineFileFormat',
-        \       'filetype': 'LightlineFileType',
-        \       'gitbranch': 'LightlineGitBranch'
-        \   },
-        \   'component': {
-        \       'fliptable': '(╯°□°）╯︵ ┻━┻'
-        \   },
-        \   'tabline': {
-        \       'left': [ [ 'tabs' ] ],
-        \       'right': [ [ 'close' ] ]
-        \   },
-        \   'tab': {
-        \       'active': [ 'filename', 'modified' ],
-        \       'inactive': [ 'filename', 'modified' ],
-        \   },
-        \   'separator': { 'left': '', 'right': '' },
-        \   'subseparator': { 'left': '', 'right': '' }
-        \ }
-        " \   'separator': { 'left': '▓▒░', 'right': '░▒▓' },
-        " \   'subseparator': { 'left': '▒', 'right': '░' }
+    function! StatusLine(current, width)
+      let l:s = ''
 
-        function! LightlineFileName() abort
-            let filename = winwidth(0) > 70 ? expand('%') : expand('%:t')
-            if filename =~ 'NERD_tree'
-                return ''
-            endif
-            let modified = &modified ? ' +' : ''
-            return fnamemodify(filename, ":~:.") . modified
-        endfunction
+      if a:current
+        let l:s .= crystalline#mode() . crystalline#right_mode_sep('')
+      else
+        let l:s .= '%#CrystallineInactive#'
+      endif
+      let l:s .= ' %f%h%w%m%r '
+      if a:current
+        let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
+      endif
 
-        function! LightlineFileEncoding()
-            " only show the file encoding if it's not 'utf-8'
-            return &fileencoding == 'utf-8' ? '' : &fileencoding
-        endfunction
+      let l:s .= '%='
+      if a:current
+        let l:s .= crystalline#left_sep('', 'Fill') . ' %{&paste ?"PASTE ":""}%{&spell?"SPELL ":""}'
+        let l:s .= crystalline#left_mode_sep('')
+      endif
+      if a:width > 80
+        let l:s .= ' %{&ft}[%{&enc}][%{&ffs}] %l/%L %c%V %P '
+      else
+        let l:s .= ' '
+      endif
 
-        function! LightlineFileFormat()
-            " only show the file format if it's not 'unix'
-            let format = &fileformat == 'unix' ? '' : &fileformat
-            return winwidth(0) > 70 ? format . ' ' . WebDevIconsGetFileFormatSymbol() : ''
-        endfunction
+      return l:s
+    endfunction
 
-        function! LightlineFileType()
-            return WebDevIconsGetFileTypeSymbol()
-            " return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
-        endfunction
+    function! TabLine()
+      let l:vimlabel = has('nvim') ?  ' NVIM ' : ' VIM '
+      return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
+    endfunction
 
-        function! LightlineLinter() abort
-            let l:counts = ale#statusline#Count(bufnr(''))
-            return l:counts.total == 0 ? '' : printf('×%d', l:counts.total)
-        endfunction
+    let g:crystalline_enable_sep = 1
+    let g:crystalline_statusline_fn = 'StatusLine'
+    let g:crystalline_tabline_fn = 'TabLine'
+    let g:crystalline_theme = 'dracula'
 
-        function! LightlineLinterWarnings() abort
-            let l:counts = ale#statusline#Count(bufnr(''))
-            let l:all_errors = l:counts.error + l:counts.style_error
-            let l:all_non_errors = l:counts.total - l:all_errors
-            return l:counts.total == 0 ? '' : '⚠️ ' . printf('%d', all_non_errors)
-        endfunction
+    set showtabline=2
+    set guioptions-=e
+    set laststatus=2
 
-        function! LightlineLinterErrors() abort
-            let l:counts = ale#statusline#Count(bufnr(''))
-            let l:all_errors = l:counts.error + l:counts.style_error
-            return l:counts.total == 0 ? '' : '❌ ' . printf('%d', all_errors)
-        endfunction
-
-        function! LightlineLinterOk() abort
-            let l:counts = ale#statusline#Count(bufnr(''))
-            return l:counts.total == 0 ? 'OK' : ''
-        endfunction
-
-        function! LightlineGitBranch()
-            return "\uE725" . (exists('*fugitive#head') ? fugitive#head() : '')
-        endfunction
-
-        function! LightlineUpdate()
-            if g:goyo_entered == 0
-                " do not update lightline if in Goyo mode
-                call lightline#update()
-            endif
-        endfunction
-
-        augroup alestatus
-            autocmd User ALELint call LightlineUpdate()
-        augroup end
-    " }}}
 " }}}
 
 " General Mappings {{{
