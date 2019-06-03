@@ -58,6 +58,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'ayu-theme/ayu-vim'
     Plug 'junegunn/seoul256.vim'
     Plug 'liuchengxu/space-vim-theme'
+    Plug 'Rigellute/shades-of-purple.vim'
     set termguicolors
 
     set number " show line numbers
@@ -688,8 +689,8 @@ call plug#end()
     " colorscheme vim-monokai-tasty
     " colorscheme seoul256
     
-    set background=dark
-    colorscheme space_vim_theme
+    syntax enable
+    colorscheme shades_of_purple
 
     syntax on
     filetype plugin indent on
