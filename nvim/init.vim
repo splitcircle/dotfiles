@@ -59,6 +59,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'junegunn/seoul256.vim'
     Plug 'liuchengxu/space-vim-theme'
     Plug 'Rigellute/shades-of-purple.vim'
+    Plug 'gruvbox-community/gruvbox'
     set termguicolors
 
     set number " show line numbers
@@ -111,7 +112,7 @@ call plug#begin('~/.config/nvim/plugged')
     " highlight conflicts
     match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-    Plug 'rbong/vim-crystalline'
+    Plug 'chriscallanjr/vim-crystalline'
 
     function! StatusLine(current, width)
       let l:s = ''
@@ -148,7 +149,7 @@ call plug#begin('~/.config/nvim/plugged')
     let g:crystalline_enable_sep = 1
     let g:crystalline_statusline_fn = 'StatusLine'
     let g:crystalline_tabline_fn = 'TabLine'
-    let g:crystalline_theme = 'dracula'
+    let g:crystalline_theme = 'shadesofpurple'
 
     set showtabline=2
     set guioptions-=e
@@ -690,7 +691,7 @@ call plug#end()
     " colorscheme seoul256
     
     syntax enable
-    colorscheme shades_of_purple
+    colorscheme gruvbox
 
     syntax on
     filetype plugin indent on
