@@ -112,7 +112,7 @@ call plug#begin('~/.config/nvim/plugged')
     " highlight conflicts
     match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-    Plug 'chriscallanjr/vim-crystalline'
+    Plug 'rbong/vim-crystalline'
 
     function! StatusLine(current, width)
       let l:s = ''
@@ -149,7 +149,7 @@ call plug#begin('~/.config/nvim/plugged')
     let g:crystalline_enable_sep = 1
     let g:crystalline_statusline_fn = 'StatusLine'
     let g:crystalline_tabline_fn = 'TabLine'
-    let g:crystalline_theme = 'shadesofpurple'
+    let g:crystalline_theme = 'gruvbox'
 
     set showtabline=2
     set guioptions-=e
@@ -692,6 +692,7 @@ call plug#end()
     
     syntax enable
     colorscheme gruvbox
+    set background=dark
 
     syntax on
     filetype plugin indent on
