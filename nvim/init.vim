@@ -92,7 +92,7 @@ call plug#begin('~/.config/nvim/plugged')
     set expandtab
 
     " code folding settings
-    set foldmethod=syntax " fold based on indent
+    set foldmethod=manual " fold based on indent
     set foldlevelstart=99
     set foldnestmax=10 " deepest fold is 10 levels
     set nofoldenable " don't fold by default
@@ -154,6 +154,24 @@ call plug#begin('~/.config/nvim/plugged')
     set showtabline=2
     set guioptions-=e
     set laststatus=2
+    
+    function! Light()
+      echom "set bg=light"
+      set bg=light
+    endfunction
+
+    function! Dark()
+      echom "set bg=dark"
+      set bg=dark
+    endfunction
+
+    function! ToggleLightDark()
+      if &bg ==# "light"
+        call Dark()
+      else
+        call Light()
+      endif
+    endfunction
 
 " }}}
 
@@ -248,6 +266,8 @@ call plug#begin('~/.config/nvim/plugged')
     nmap \s :set ts=4 sts=4 sw=4 et<cr>
 
     nnoremap <silent> <leader>u :call functions#HtmlUnEscape()<cr>
+
+    nnoremap <leader>c :call ToggleLightDark()<CR>
 
     command! Rm call functions#Delete()
     command! RM call functions#Delete() <Bar> q!
@@ -683,13 +703,8 @@ call plug#end()
 " Colorscheme and final setup {{{
     " This call must happen after the plug#end() call to ensure
     " that the colorschemes have been loaded
-    " colorscheme japanesque
     set t_Co=256
-    " colorscheme inkstained
-    " colorscheme hydrangea
-    " colorscheme vim-monokai-tasty
-    " colorscheme seoul256
-    
+
     syntax enable
     colorscheme gruvbox
     set background=dark
