@@ -31,6 +31,8 @@ call plug#begin('~/.config/nvim/plugged')
         set mouse=a
     endif
 
+    set splitbelow
+
     " Searching
     set ignorecase " case insensitive searching
     set smartcase " case-sensitive if expresson contains a capital letter
@@ -187,8 +189,8 @@ call plug#begin('~/.config/nvim/plugged')
     inoremap jk <esc>
 
     " shortcut to terminal buffer
-    map <leader>` :terminal<cr>
-
+    nnoremap <leader>` :split<CR>:terminal<CR>:resize 10<CR>
+    
     " shortcut to save
     nmap <leader>, :w<cr>
 
