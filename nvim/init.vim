@@ -320,9 +320,6 @@ call plug#begin('~/.config/nvim/plugged')
     " mappings to easily delete, change and add such surroundings in pairs, such as quotes, parens, etc.
     Plug 'tpope/vim-surround'
 
-    " tmux integration for vim
-    Plug 'benmills/vimux'
-
     " enables repeating other supported plugins with the . command
     Plug 'tpope/vim-repeat'
 
@@ -641,6 +638,10 @@ call plug#begin('~/.config/nvim/plugged')
         Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
         Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
         Plug 'alampros/vim-styled-jsx'
+        " Run jest for current test
+        nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
+        " Run jest for current file
+        nnoremap <leader>ta :call CocAction('runCommand', 'jest.fileTest', ['%'])<CR>
     " }}}
     
     " JSON {{{
