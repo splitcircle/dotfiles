@@ -380,7 +380,10 @@ call plug#begin('~/.config/nvim/plugged')
 
         autocmd User Startified setlocal cursorline
     " }}}
-
+    
+    " Desperately trying to build org mode
+    Plug 'vimwiki/vimwiki'
+    
     " Open selection in carbon.now.sh
     Plug 'kristijanhusak/vim-carbon-now-sh'
 
