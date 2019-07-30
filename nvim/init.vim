@@ -1,5 +1,4 @@
 call plug#begin('~/.config/nvim/plugged')
-
 " General {{{
     " Abbreviations
     abbr funciton function
@@ -50,15 +49,15 @@ call plug#begin('~/.config/nvim/plugged')
 " Appearance {{{
     " colorscheme
     Plug 'felixhummel/setcolors.vim'
-    Plug 'yuttie/inkstained-vim'
-    Plug 'yuttie/hydrangea-vim'
-    Plug 'KKPMW/sacredforest-vim'
-    Plug 'patstockwell/vim-monokai-tasty'
-    Plug 'nightsense/snow'
-    Plug 'ayu-theme/ayu-vim'
-    Plug 'junegunn/seoul256.vim'
-    Plug 'liuchengxu/space-vim-theme'
-    Plug 'Rigellute/shades-of-purple.vim'
+    " Plug 'yuttie/inkstained-vim'
+    " Plug 'yuttie/hydrangea-vim'
+    " Plug 'KKPMW/sacredforest-vim'
+    " Plug 'patstockwell/vim-monokai-tasty'
+    " Plug 'nightsense/snow'
+    " Plug 'ayu-theme/ayu-vim'
+    " Plug 'junegunn/seoul256.vim'
+    " Plug 'liuchengxu/space-vim-theme'
+    " Plug 'Rigellute/shades-of-purple.vim'
     Plug 'gruvbox-community/gruvbox'
     set termguicolors
 
@@ -579,7 +578,7 @@ call plug#begin('~/.config/nvim/plugged')
     " }}}
     
     " CoC {{{
-      Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
+      Plug 'neoclide/coc.nvim', {'branch': 'release'}
      " Use <C-l> for trigger snippet expand.
       imap <C-l> <Plug>(coc-snippets-expand)
 
