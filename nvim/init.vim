@@ -59,10 +59,11 @@ call plug#begin('~/.config/nvim/plugged')
     " Plug 'liuchengxu/space-vim-theme'
     " Plug 'Rigellute/shades-of-purple.vim'
     Plug 'gruvbox-community/gruvbox'
+    Plug 'dracula/vim', { 'as': 'dracula' }
     set termguicolors
 
     set number " show line numbers
-    set cursorline
+    " set cursorline
     set wrap " turn on line wrapping
     set wrapmargin=8 " wrap lines when coming within n characters from side
     set linebreak " set soft wrapping
@@ -148,7 +149,7 @@ call plug#begin('~/.config/nvim/plugged')
     let g:crystalline_enable_sep = 1
     let g:crystalline_statusline_fn = 'StatusLine'
     let g:crystalline_tabline_fn = 'TabLine'
-    let g:crystalline_theme = 'gruvbox'
+    let g:crystalline_theme = 'dracula'
 
     set showtabline=2
     set guioptions-=e
@@ -372,9 +373,9 @@ call plug#begin('~/.config/nvim/plugged')
         \ ]
 
         let g:startify_bookmarks = [
-            \ { 'c': '~/personal-projects/dotfiles/nvim/init.vim' },
-            \ { 'z': '~/personal-projects/dotfiles/.zshrc' },
-            \ { 'g': '~/personal-projects/dotfiles/.gitconfig' }
+            \ { 'c': '~/dotfiles/nvim/init.vim' },
+            \ { 'z': '~/dotfiles/.zshrc' },
+            \ { 'g': '~/dotfiles/.gitconfig' }
         \ ]
 
         autocmd User Startified setlocal cursorline
@@ -710,7 +711,7 @@ call plug#end()
     set t_Co=256
 
     syntax enable
-    colorscheme gruvbox
+    colorscheme dracula
     set background=dark
 
     syntax on
