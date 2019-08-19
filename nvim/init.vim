@@ -60,6 +60,7 @@ call plug#begin('~/.config/nvim/plugged')
     " Plug 'Rigellute/shades-of-purple.vim'
     Plug 'gruvbox-community/gruvbox'
     Plug 'dracula/vim', { 'as': 'dracula' }
+    Plug 'joshdick/onedark.vim'
     set termguicolors
 
     set number " show line numbers
@@ -149,7 +150,7 @@ call plug#begin('~/.config/nvim/plugged')
     let g:crystalline_enable_sep = 1
     let g:crystalline_statusline_fn = 'StatusLine'
     let g:crystalline_tabline_fn = 'TabLine'
-    let g:crystalline_theme = 'dracula'
+    let g:crystalline_theme = 'onedark'
 
     set showtabline=2
     set guioptions-=e
@@ -711,7 +712,7 @@ call plug#end()
     set t_Co=256
 
     syntax enable
-    colorscheme dracula
+    colorscheme onedark
     set background=dark
 
     syntax on
