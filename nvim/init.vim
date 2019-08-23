@@ -343,6 +343,8 @@ call plug#begin('~/.config/nvim/plugged')
     " add end, endif, etc. automatically
     Plug 'tpope/vim-endwise'
 
+    Plug 'ludovicchabant/vim-gutentags'
+
     " Fancy startup screen for vim {{{
     Plug 'mhinz/vim-startify'
 

@@ -64,3 +64,4 @@ export NVM_DIR="$HOME/.nvm"
   autoload -U promptinit; promptinit
   prompt spaceship
 
+ctags=/usr/local/bin/ctags
