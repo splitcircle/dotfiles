@@ -61,6 +61,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'gruvbox-community/gruvbox'
     Plug 'dracula/vim', { 'as': 'dracula' }
     Plug 'joshdick/onedark.vim'
+    Plug 'rakr/vim-one'
     set termguicolors
 
     set number " show line numbers
@@ -715,7 +716,7 @@ call plug#end()
     set t_Co=256
 
     syntax enable
-    colorscheme onedark
+    colorscheme one
     set background=dark
 
     syntax on
