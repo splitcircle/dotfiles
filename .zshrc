@@ -69,10 +69,6 @@ git_prompt() {
   fi
 }
 
-time_display() {
-  echo ""
-}
-
 PROMPT='
 ‎ 🏴%B%F{red}٣١٣🏴 %F{yellow}/%c‎
 %F{yellow}%t %F{red}➜ '
