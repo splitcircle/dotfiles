@@ -12,7 +12,7 @@ alias v=nvim
     zle accept-line
   }
   zle -N up_widget
-  bindkey "^k" up_widget
+  bindkey "^a" up_widget
 
 # home
   function goto_home() { 
@@ -21,7 +21,7 @@ alias v=nvim
     zle accept-line
   }
   zle -N goto_home
-  bindkey "^h" goto_home
+  bindkey "^o" goto_home
 
 # clear
   function clear_out() {
@@ -54,7 +54,11 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-PROMPT='🐡'
+#custom prompt
+PROMPT='
+‎🏴%F{cyan}٣١٣🏴‎
+%F{magenta}➜ '
+
 RPROMPT='🌸'
 
 #sourcing plugins
