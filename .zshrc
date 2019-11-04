@@ -6,6 +6,8 @@ PATH=$GOPATH/bin:$PATH
 
 alias v=nvim
 
+setopt PROMPT_SUBST
+
 # up
   function up_widget() {
     BUFFER="cd .."
@@ -55,11 +57,27 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 #custom prompt
-PROMPT='
-‎🏴%F{cyan}٣١٣🏴‎
-%F{magenta}➜ '
+git_prompt() {
+  BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/*\(.*\)/\1/')
 
-RPROMPT='🌸'
+  if [ ! -z $BRANCH ]; then
+    echo -n "%F{yellow}$BRANCH"
+
+    if [ ! -z "$(git status --short)" ]; then
+      echo " %F{red}✗"
+    fi
+  fi
+}
+
+time_display() {
+  echo ""
+}
+
+PROMPT='
+‎ 🏴%B%F{red}٣١٣🏴 %F{yellow}/%c‎
+%F{yellow}%t %F{red}➜ '
+
+RPROMPT='$(git_prompt)'
 
 #sourcing plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
