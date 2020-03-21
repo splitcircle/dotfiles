@@ -70,7 +70,7 @@ git_prompt() {
 }
 
 PROMPT='
-‎%B%F{216}%T %F{183}/%c‎
+‎%U%F{216}%T %F{183}/%c‎%u
 %F{183}𝝺 '
 
 RPROMPT='$(git_prompt)'
