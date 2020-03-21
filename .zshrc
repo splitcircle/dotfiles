@@ -4,6 +4,8 @@ export PATH=$PATH:/Users/ccallan/.npm-global/bin
 export GOPATH=$HOME/go
 PATH=$GOPATH/bin:$PATH
 
+eval "$(rbenv init -)"
+
 alias v=nvim
 
 setopt PROMPT_SUBST
@@ -58,17 +60,17 @@ git_prompt() {
   BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/*\(.*\)/\1/')
 
   if [ ! -z $BRANCH ]; then
-    echo -n "%F{yellow}$BRANCH"
+    echo -n "%F{183}$BRANCH"
 
     if [ ! -z "$(git status --short)" ]; then
-      echo " %F{red}✗"
+      echo " %F{160}✗"
     fi
   fi
 }
 
 PROMPT='
-‎🏴%B%F{red}٣١٣🏴 %F{yellow}/%c‎
-%F{yellow}%t %F{red}➜ '
+‎%B%F{216}%T %F{183}/%c‎
+%F{183}𝝺 '
 
 RPROMPT='$(git_prompt)'
 
