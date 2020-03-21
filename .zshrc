@@ -7,6 +7,7 @@ PATH=$GOPATH/bin:$PATH
 eval "$(rbenv init -)"
 
 alias v=nvim
+alias doom=~/.emacs.d/bin/doom
 
 setopt PROMPT_SUBST
 
