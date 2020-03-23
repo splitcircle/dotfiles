@@ -61,17 +61,17 @@ git_prompt() {
   BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/*\(.*\)/\1/')
 
   if [ ! -z $BRANCH ]; then
-    echo -n "%F{183}$BRANCH"
+    echo -n "%F{magenta}$BRANCH"
 
     if [ ! -z "$(git status --short)" ]; then
-      echo " %F{160}✗"
+      echo " %F{red}✗"
     fi
   fi
 }
 
 PROMPT='
-‎%U%F{216}%T %F{183}/%c‎%u
-%F{183}𝝺 '
+‎%U%F{red}%T %F{magenta}/%c‎%u
+%F{magenta}𝝺 '
 
 RPROMPT='$(git_prompt)'
 
