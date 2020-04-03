@@ -104,7 +104,6 @@ call plug#begin('~/.config/nvim/plugged')
     if (has("termguicolors"))
       set termguicolors
     endif
-    " let ayucolor="mirage"
 
     " highlight conflicts
     match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -151,7 +150,7 @@ call plug#begin('~/.config/nvim/plugged')
     set showtabline=2
     set guioptions-=e
     set laststatus=2
-    
+
     function! Light()
       echom "set bg=light"
       set bg=light
@@ -182,9 +181,6 @@ call plug#begin('~/.config/nvim/plugged')
 
     " remap esc
     inoremap jk <esc>
-
-    " shortcut to terminal buffer
-    nnoremap <leader>` :belowright split<CR>:terminal<CR>:resize 10<CR>
     
     " shortcut to save
     nmap <leader>bs :w<cr>
@@ -445,10 +441,10 @@ call plug#begin('~/.config/nvim/plugged')
 
         if isdirectory(".git")
             " if in a git project, use :GFiles
-            nmap <silent> <leader>t :GitFiles --cached --others --exclude-standard<cr>
+            nmap <silent> <leader>* :GitFiles --cached --others --exclude-standard<cr>
         else
             " otherwise, use :FZF
-            nmap <silent> <leader>t :FZF<cr>
+            nmap <silent> <leader>* :FZF<cr>
         endif
 
         nmap <silent> <leader>r :Buffers<cr>
@@ -585,12 +581,6 @@ call plug#begin('~/.config/nvim/plugged')
 
         " html5 support
         Plug 'othree/html5.vim', { 'for': 'html' }
-
-        " mustache support
-        Plug 'mustache/vim-mustache-handlebars'
-
-        " pug / jade support
-        Plug 'digitaltoad/vim-pug', { 'for': ['jade', 'pug'] }
     " }}}
 
     " JavaScript {{{
@@ -601,28 +591,6 @@ call plug#begin('~/.config/nvim/plugged')
         Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
         Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
         Plug 'alampros/vim-styled-jsx'
-        " Run jest for current test
-        nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
-        " Run jest for current file
-        nnoremap <leader>ta :call CocAction('runCommand', 'jest.fileTest', ['%'])<CR>
-    " }}}
-    
-    " JSON {{{
-        Plug 'elzr/vim-json'
-    " }}}
-
-    " TypeScript {{{
-        Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-        Plug 'ianks/vim-tsx', { 'for': 'typescript' }
-        Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-
-        " Plug 'mhartington/nvim-typescript', { 'for': 'typescript', 'do': './install.sh' }
-        " let g:nvim_typescript#diagnostics_enable = 0
-        " let g:nvim_typescript#max_completion_detail=100
-    " }}}
-    
-    " Java {{{
-        Plug 'sheerun/vim-polyglot'
     " }}}
     
     " Clojure {{{
@@ -630,11 +598,6 @@ call plug#begin('~/.config/nvim/plugged')
         Plug 'tpope/vim-fireplace'
         
     " }}}
-    
-    " Rust {{{
-        Plug 'rust-lang/rust.vim'
-    " }}}
-
 
     " Styles {{{
         Plug 'wavded/vim-stylus', { 'for': ['stylus', 'markdown'] }
@@ -654,11 +617,7 @@ call plug#begin('~/.config/nvim/plugged')
         let g:vim_json_syntax_conceal = 0
     " }}}
 
-    Plug 'fatih/vim-go', { 'for': 'go' }
     Plug 'timcharper/textile.vim', { 'for': 'textile' }
-    " Plug 'lambdatoast/elm.vim', { 'for': 'elm' }
-    Plug 'elmcast/elm-vim'
-    Plug 'kchmck/vim-coffee-script', { 'for': 'coffeescript' }
     Plug 'nikvdp/ejs-syntax'
 " }}}
 
