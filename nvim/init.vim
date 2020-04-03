@@ -1,15 +1,9 @@
 call plug#begin('~/.config/nvim/plugged')
 " General {{{
-    " Abbreviations
-    abbr funciton function
-    abbr teh the
-    abbr tempalte template
-    abbr fitler filter
-    abbr cosnt const
-    abbr attribtue attribute
-    abbr attribuet attribute
-
     set autoread " detect when a file is changed
+
+    set notimeout
+    set ttimeout
 
     set history=1000 " change history to 1000
     set textwidth=120
