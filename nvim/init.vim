@@ -58,7 +58,7 @@ call plug#begin('~/.config/nvim/plugged')
     " Plug 'junegunn/seoul256.vim'
     " Plug 'liuchengxu/space-vim-theme'
     " Plug 'Rigellute/shades-of-purple.vim'
-    Plug 'gruvbox-community/gruvbox'
+    Plug 'morhetz/gruvbox'
     Plug 'dracula/vim', { 'as': 'dracula' }
     Plug 'joshdick/onedark.vim'
     Plug 'rakr/vim-one'
@@ -152,7 +152,7 @@ call plug#begin('~/.config/nvim/plugged')
     let g:crystalline_enable_sep = 1
     let g:crystalline_statusline_fn = 'StatusLine'
     let g:crystalline_tabline_fn = 'TabLine'
-    let g:crystalline_theme = 'onedark'
+    let g:crystalline_theme = 'gruvbox'
 
     set showtabline=2
     set guioptions-=e
@@ -184,7 +184,7 @@ call plug#begin('~/.config/nvim/plugged')
     noremap <Left> <NOP>
     noremap <Right> <NOP> 
     " set a map leader for more key combos
-    let mapleader = ','
+    map <Space> <Leader>
 
     " remap esc
     inoremap jk <esc>
@@ -193,28 +193,24 @@ call plug#begin('~/.config/nvim/plugged')
     nnoremap <leader>` :belowright split<CR>:terminal<CR>:resize 10<CR>
     
     " shortcut to save
-    nmap <leader>, :w<cr>
+    nmap <leader>bs :w<cr>
 
     " set paste toggle
     set pastetoggle=<leader>v
 
     " edit ~/.config/nvim/init.vim
-    map <leader>ev :e! ~/.config/nvim/init.vim<cr>
+    map <leader>ev :e! ~/dotfiles/nvim/init.vim<cr>
     " edit gitconfig
-    map <leader>eg :e! ~/.gitconfig<cr>
+    map <leader>eg :e! ~/dotfiles/.gitconfig<cr>
 
     " clear highlighted search
-    noremap <space> :set hlsearch! hlsearch?<cr>
+    " noremap <space> :set hlsearch! hlsearch?<cr>
 
     " activate spell-checking alternatives
     nmap ;s :set invspell spelllang=en<cr>
 
     " markdown to html
     nmap <leader>md :%!markdown --html4tags <cr>
-
-    " remove extra whitespace
-    nmap <leader><space> :%s/\s\+$<cr>
-    nmap <leader><space><space> :%s/\n\{2,}/\r\r/g<cr>
 
     inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
     inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
@@ -300,9 +296,6 @@ call plug#begin('~/.config/nvim/plugged')
     " Plug 'wincent/terminus'
     " substitute, search, and abbreviate multiple variants of a word
     Plug 'tpope/vim-abolish'
-
-    Plug 'itchyny/calendar.vim'
-    let g:calendar_google_calendar = 1
 
     " search inside files using ripgrep. This plugin provides an Ack command.
     Plug 'wincent/ferret'
@@ -394,40 +387,7 @@ call plug#begin('~/.config/nvim/plugged')
 
     " Close buffers but keep splits
     Plug 'moll/vim-bbye'
-    nmap <leader>b :Bdelete<cr>
-
-    " Writing in vim {{{{
-        Plug 'junegunn/limelight.vim'
-        Plug 'junegunn/goyo.vim'
-        let g:limelight_conceal_ctermfg = 240
-
-        let g:goyo_entered = 0
-        function! s:goyo_enter()
-            silent !tmux set status off
-            let g:goyo_entered = 1
-            set noshowmode
-            set noshowcmd
-            set scrolloff=999
-            set wrap
-            setlocal textwidth=0
-            setlocal wrapmargin=0
-            Limelight
-        endfunction
-
-        function! s:goyo_leave()
-            silent !tmux set status on
-            let g:goyo_entered = 0
-            set showmode
-            set showcmd
-            set scrolloff=5
-            set textwidth=120
-            set wrapmargin=8
-            Limelight!
-        endfunction
-
-        autocmd! User GoyoEnter nested call <SID>goyo_enter()
-        autocmd! User GoyoLeave nested call <SID>goyo_leave()
-    " }}}
+    nmap <leader>bd :Bdelete<cr>
 
     " context-aware pasting
     Plug 'sickill/vim-pasta'
@@ -497,8 +457,6 @@ call plug#begin('~/.config/nvim/plugged')
             nmap <silent> <leader>t :FZF<cr>
         endif
 
-        nmap <silent> <leader>s :GFiles?<cr>
-
         nmap <silent> <leader>r :Buffers<cr>
         nmap <silent> <leader>e :FZF<cr>
         nmap <leader><tab> <plug>(fzf-maps-n)
@@ -514,7 +472,7 @@ call plug#begin('~/.config/nvim/plugged')
         nnoremap <silent> <Leader>C :call fzf#run({
         \   'source':
         \     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
-        \         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
+        \         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', ', '')"),
         \   'sink':    'colo',
         \   'options': '+m',
         \   'left':    30
@@ -551,6 +509,7 @@ call plug#begin('~/.config/nvim/plugged')
         Plug 'junegunn/gv.vim'
         Plug 'sodapopcan/vim-twiggy'
         Plug 'christoomey/vim-conflicted'
+        " TODO: update this binding
         nmap <silent> <leader>gs :Gstatus<cr>
         nmap <leader>ge :Gedit<cr>
         nmap <silent><leader>gr :Gread<cr>
@@ -716,7 +675,7 @@ call plug#end()
     set t_Co=256
 
     syntax enable
-    colorscheme one
+    colorscheme gruvbox
     set background=dark
 
     syntax on
