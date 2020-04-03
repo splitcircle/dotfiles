@@ -509,8 +509,9 @@ call plug#begin('~/.config/nvim/plugged')
         Plug 'junegunn/gv.vim'
         Plug 'sodapopcan/vim-twiggy'
         Plug 'christoomey/vim-conflicted'
-        " TODO: update this binding
-        nmap <silent> <leader>gs :Gstatus<cr>
+        nmap <silent> <leader>gg :Gstatus<cr>
+        nmap <silent> <leader>gc :Gcommit<cr>
+        nmap <silent> <leader>gp :Gpush<cr>
         nmap <leader>ge :Gedit<cr>
         nmap <silent><leader>gr :Gread<cr>
         nmap <silent><leader>gb :Gblame<cr>
