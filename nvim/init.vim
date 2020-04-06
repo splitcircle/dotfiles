@@ -42,16 +42,11 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Appearance {{{
     " colorscheme
-    Plug 'felixhummel/setcolors.vim'
     " Plug 'yuttie/inkstained-vim'
     " Plug 'yuttie/hydrangea-vim'
     " Plug 'KKPMW/sacredforest-vim'
-    " Plug 'patstockwell/vim-monokai-tasty'
-    " Plug 'nightsense/snow'
-    " Plug 'ayu-theme/ayu-vim'
-    " Plug 'junegunn/seoul256.vim'
-    " Plug 'liuchengxu/space-vim-theme'
-    " Plug 'Rigellute/shades-of-purple.vim'
+    
+    Plug 'drewtempelmeyer/palenight.vim' 
     Plug 'morhetz/gruvbox'
     Plug 'dracula/vim', { 'as': 'dracula' }
     Plug 'joshdick/onedark.vim'
@@ -107,45 +102,6 @@ call plug#begin('~/.config/nvim/plugged')
 
     " highlight conflicts
     match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
-
-    Plug 'rbong/vim-crystalline'
-
-    function! StatusLine(current, width)
-      let l:s = ''
-
-      if a:current
-        let l:s .= crystalline#mode() . crystalline#right_mode_sep('')
-      else
-        let l:s .= '%#CrystallineInactive#'
-      endif
-      let l:s .= ' %f%h%w%m%r '
-      if a:current
-        let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
-      endif
-
-      let l:s .= '%='
-      if a:current
-        let l:s .= crystalline#left_sep('', 'Fill') . ' %{&paste ?"PASTE ":""}%{&spell?"SPELL ":""}'
-        let l:s .= crystalline#left_mode_sep('')
-      endif
-      if a:width > 80
-        let l:s .= ' %{&ft}[%{&enc}][%{&ffs}] %l/%L %c%V %P '
-      else
-        let l:s .= ' '
-      endif
-
-      return l:s
-    endfunction
-
-    function! TabLine()
-      let l:vimlabel = has('nvim') ?  ' NVIM ' : ' VIM '
-      return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
-    endfunction
-
-    let g:crystalline_enable_sep = 1
-    let g:crystalline_statusline_fn = 'StatusLine'
-    let g:crystalline_tabline_fn = 'TabLine'
-    let g:crystalline_theme = 'gruvbox'
 
     set showtabline=2
     set guioptions-=e
@@ -412,7 +368,7 @@ call plug#begin('~/.config/nvim/plugged')
             endif
         endfunction
         " toggle nerd tree
-        nmap <silent> <leader>k :call ToggleNerdTree()<cr>
+        nmap <silent> <leader>op :call ToggleNerdTree()<cr>
         " find the current file in nerdtree without needing to reload the drawer
         nmap <silent> <leader>y :NERDTreeFind<cr>
 
@@ -629,7 +585,7 @@ call plug#end()
     set t_Co=256
 
     syntax enable
-    colorscheme gruvbox
+    colorscheme palenight
     set background=dark
 
     syntax on
@@ -648,3 +604,4 @@ call plug#end()
 " }}}
 
 " vim:set foldmethod=marker foldlevel=0
+source ~/dotfiles/nvim/statusline.vim
