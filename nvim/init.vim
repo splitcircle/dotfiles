@@ -45,12 +45,8 @@ call plug#begin('~/.config/nvim/plugged')
     " Plug 'yuttie/inkstained-vim'
     " Plug 'yuttie/hydrangea-vim'
     " Plug 'KKPMW/sacredforest-vim'
-    
-    Plug 'drewtempelmeyer/palenight.vim' 
-    Plug 'morhetz/gruvbox'
-    Plug 'dracula/vim', { 'as': 'dracula' }
-    Plug 'joshdick/onedark.vim'
-    Plug 'rakr/vim-one'
+    Plug 'sainnhe/forest-night'
+    Plug 'altercation/vim-colors-solarized'
     set termguicolors
 
     set number " show line numbers
@@ -141,6 +137,10 @@ call plug#begin('~/.config/nvim/plugged')
     " shortcut to save
     nmap <leader>bs :w<cr>
 
+    " tabbing through buffers
+    nmap <leader>bn :bnext<cr>
+    nmap <leader>bp :bprevious<cr>
+    
     " set paste toggle
     set pastetoggle=<leader>v
 
@@ -170,7 +170,7 @@ call plug#begin('~/.config/nvim/plugged')
     nmap <leader>] >>
 
     " switch between current and last buffer
-    nmap <leader>. <c-^>
+    " nmap <leader>. <c-^>
 
     " enable . command in visual mode
     vnoremap . :normal .<cr>
@@ -216,6 +216,9 @@ call plug#begin('~/.config/nvim/plugged')
 
     command! Rm call functions#Delete()
     command! RM call functions#Delete() <Bar> q!
+
+    " shortcut to terminal buffer
+    nnoremap <leader>ot :belowright split<CR>:terminal<CR>:resize 10<CR>
 " }}}
 
 " AutoGroups {{{
@@ -397,10 +400,10 @@ call plug#begin('~/.config/nvim/plugged')
 
         if isdirectory(".git")
             " if in a git project, use :GFiles
-            nmap <silent> <leader>* :GitFiles --cached --others --exclude-standard<cr>
+            nmap <silent> <leader>. :GitFiles --cached --others --exclude-standard<cr>
         else
             " otherwise, use :FZF
-            nmap <silent> <leader>* :FZF<cr>
+            nmap <silent> <leader>. :FZF<cr>
         endif
 
         nmap <silent> <leader>r :Buffers<cr>
@@ -582,11 +585,12 @@ call plug#end()
 " Colorscheme and final setup {{{
     " This call must happen after the plug#end() call to ensure
     " that the colorschemes have been loaded
-    set t_Co=256
+    " set t_Co=256
 
     syntax enable
-    colorscheme palenight
-    set background=dark
+    let g:forest_night_enable_italic = 1
+    let g:forest_night_disable_italic_comment = 1
+    colorscheme forest-night
 
     syntax on
     filetype plugin indent on

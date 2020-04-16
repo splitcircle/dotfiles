@@ -71,7 +71,7 @@ git_prompt() {
 
 PROMPT='
 ‎%U%F{red}%T %F{magenta}/%c‎%u
-%F{magenta}𝝺 '
+%F{magenta}λ '
 
 RPROMPT='$(git_prompt)'
 

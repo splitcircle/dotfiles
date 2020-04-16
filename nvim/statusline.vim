@@ -1,24 +1,24 @@
 function! ModeColors(mode) " {{{
   " Normal mode
   if a:mode == 'n'
-    hi fgc guifg=#292d3e guibg=#e1acff
+    hi fgc guifg=#292d3e guibg=#A7C080
     hi powerline guifg=#e1acff
-    hi fgc_b guifg=#e1acff guibg=#434758
+    hi fgc_b guifg=#e1acff guibg=#A7C080
   " Insert mode
   elseif a:mode == 'i'
-    hi fgc guifg=#292d3e guibg=#ffe585
+    hi fgc guifg=#292d3e guibg=#d8caac
     hi powerline guifg=#ffe585
-    hi fgc_b guifg=#ffe585 guibg=#434758
+    hi fgc_b guifg=#ffe585 guibg=#d8caac
   " Replace mode
   elseif a:mode == 'R'
-    hi fgc guifg=#292d3e guibg=#f0b295
+    hi fgc guifg=#292d3e guibg=#e39b7b
     hi powerline guifg=#f0b295
-    hi fgc_b guifg=#f0b295 guibg=#434758
+    hi fgc_b guifg=#f0b295 guibg=#e39b7b
   " Visual mode
   elseif a:mode == 'v' || a:mode == 'V' || a:mode == ""
-    hi fgc guifg=#292d3e guibg=#f07178
+    hi fgc guifg=#292d3e guibg=#e68183
     hi powerline guifg=#f07178
-    hi fgc_b guifg=#f07178 guibg=#434758
+    hi fgc_b guifg=#f07178 guibg=#e68183
   " Command mode
   elseif a:mode == 'c'
     hi fgc guifg=#32343e guibg=#bdd0e5 
@@ -30,9 +30,6 @@ function! ModeColors(mode) " {{{
     hi powerline guifg=#a3f7ff 
     hi fgc_b guifg=#a3f7ff guibg=#434758
   endif
-
-  " entering and exiting out of goyo messes with this so I just set it every time
-  hi powerline_b guifg=#434758 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 
   " Return empty string so as not to display anything in the statusline
   return ''
@@ -64,44 +61,30 @@ function! ModeName(mode)
   endif
 endfunction
 
-hi modified_powerline_b guifg=#292d3e guibg=#434758
-hi modified_fgc guifg=#292d3e guibg=#434758
-function! Modified(modified)
-  if a:modified == 1
-    hi modified_powerline_b guifg=#434758 guibg=NONE
-    hi modified_fgc guifg=#f07178 guibg=#434758
-  else
-    hi modified_powerline_b guifg=#292d3e guibg=#292d3e
-    hi modified_fgc guifg=#292d3e guibg=#292d3e
-  endif
-  return '●'
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
 
-function! BufNum()
-  return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+function! StatuslineGit()
+ let l:branchname = GitBranch()
+ return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
 endfunction
 
-set noshowmode
-set laststatus=2
 set statusline=
-
-" Update colors when ya do
+set statusline+=%#PmenuSel#
 set statusline+=%{ModeColors(mode())}
-
-" Mode
 set statusline+=%#powerline#%#fgc#%{ModeName(mode())}%#powerline#
-set statusline+=\ 
-
-" Filename
-set statusline+=%#powerline_b#%#fgc_b#%.20f%#powerline_b#
-set statusline+=\ 
-
-" Right Side
+set statusline+=%#LineNr#
+set statusline+=\ %f
+set statusline+=%m\
 set statusline+=%=
-
-" Modified 
-set statusline+=%#modified_powerline_b#%#modified_fgc#%{Modified(&modified)}%#modified_powerline_b#
+set statusline+=%#CursorColumn#
+set statusline+=\ %y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\[%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
 set statusline+=\ 
 
-" Number of buffers
-set statusline+=%#powerline#%#fgc#%{BufNum()}%#powerline#
+" set statusline+=%{StatuslineGit()}
+
