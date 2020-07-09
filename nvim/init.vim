@@ -2,9 +2,6 @@ call plug#begin('~/.config/nvim/plugged')
 " General {{{
     set autoread " detect when a file is changed
 
-    set notimeout
-    set ttimeout
-
     set history=1000 " change history to 1000
     set textwidth=120
 
@@ -45,7 +42,8 @@ call plug#begin('~/.config/nvim/plugged')
     " Plug 'yuttie/inkstained-vim'
     " Plug 'yuttie/hydrangea-vim'
     " Plug 'KKPMW/sacredforest-vim'
-    Plug 'sainnhe/forest-night'
+    " Plug 'sainnhe/forest-night'
+    Plug 'arcticicestudio/nord-vim'
     Plug 'altercation/vim-colors-solarized'
     set termguicolors
 
@@ -243,6 +241,12 @@ call plug#begin('~/.config/nvim/plugged')
 " General Functionality {{{
     " better terminal integration
     " Plug 'wincent/terminus'
+
+    " key chord display
+    Plug 'liuchengxu/vim-which-key'
+    " nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+    " set timeoutlen=500
+
     " substitute, search, and abbreviate multiple variants of a word
     Plug 'tpope/vim-abolish'
 
@@ -321,7 +325,7 @@ call plug#begin('~/.config/nvim/plugged')
 
         let g:startify_bookmarks = [
             \ { 'c': '~/dotfiles/nvim/init.vim' },
-            \ { 'z': '~/dotfiles/.zshrc' },
+            \ { 'f': '~/dotfiles/fish/config.fish' },
             \ { 'g': '~/dotfiles/.gitconfig' }
         \ ]
 
@@ -550,6 +554,7 @@ call plug#begin('~/.config/nvim/plugged')
         Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
         Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
         Plug 'alampros/vim-styled-jsx'
+        Plug 'evanleck/vim-svelte'
     " }}}
     
     " Clojure {{{
@@ -590,7 +595,7 @@ call plug#end()
     syntax enable
     let g:forest_night_enable_italic = 1
     let g:forest_night_disable_italic_comment = 1
-    colorscheme forest-night
+    colorscheme nord
 
     syntax on
     filetype plugin indent on

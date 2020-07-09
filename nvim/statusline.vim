@@ -1,23 +1,23 @@
 function! ModeColors(mode) " {{{
   " Normal mode
   if a:mode == 'n'
-    hi fgc guifg=#292d3e guibg=#A7C080
-    hi powerline guifg=#e1acff
+    hi fgc guifg=#3B4151 guibg=#87C0D0
+    hi powerline guifg=#87C0D0
     hi fgc_b guifg=#e1acff guibg=#A7C080
   " Insert mode
   elseif a:mode == 'i'
-    hi fgc guifg=#292d3e guibg=#d8caac
-    hi powerline guifg=#ffe585
+    hi fgc guifg=#3B4151 guibg=#EBEFF3
+    hi powerline guifg=#EBEFF3
     hi fgc_b guifg=#ffe585 guibg=#d8caac
   " Replace mode
   elseif a:mode == 'R'
-    hi fgc guifg=#292d3e guibg=#e39b7b
-    hi powerline guifg=#f0b295
+    hi fgc guifg=#3B4151 guibg=#B48EAB
+    hi powerline guifg=#B48EAB
     hi fgc_b guifg=#f0b295 guibg=#e39b7b
   " Visual mode
   elseif a:mode == 'v' || a:mode == 'V' || a:mode == ""
-    hi fgc guifg=#292d3e guibg=#e68183
-    hi powerline guifg=#f07178
+    hi fgc guifg=#3B4151 guibg=#8ABCBB
+    hi powerline guifg=#8ABCBB
     hi fgc_b guifg=#f07178 guibg=#e68183
   " Command mode
   elseif a:mode == 'c'
@@ -80,10 +80,7 @@ set statusline+=%m\
 set statusline+=%=
 set statusline+=%#CursorColumn#
 set statusline+=\ %y
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\[%{&fileformat}\]
 set statusline+=\ %p%%
-set statusline+=\ %l:%c
 set statusline+=\ 
 
 " set statusline+=%{StatuslineGit()}
