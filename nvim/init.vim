@@ -43,8 +43,10 @@ call plug#begin('~/.config/nvim/plugged')
     " Plug 'yuttie/hydrangea-vim'
     " Plug 'KKPMW/sacredforest-vim'
     " Plug 'sainnhe/forest-night'
-    Plug 'arcticicestudio/nord-vim'
-    Plug 'altercation/vim-colors-solarized'
+    " Plug 'arcticicestudio/nord-vim'
+    " Plug 'ayu-theme/ayu-vim'
+    Plug 'dracula/vim', { 'as': 'dracula' }
+
     set termguicolors
 
     set number " show line numbers
@@ -121,6 +123,48 @@ call plug#begin('~/.config/nvim/plugged')
 
 " }}}
 
+" Lightline {{{
+    Plug 'itchyny/lightline.vim'
+      let g:lightline = {
+          \   'colorscheme': 'dracula',
+          \   'active': {
+          \       'left': [ [ 'mode', 'paste' ],
+          \               [ 'gitbranch' ],
+          \               [ 'readonly', 'filetype', 'filename' ]],
+          \       'right': [ [ 'percent' ], [ 'lineinfo' ],
+          \               [ 'fileformat', 'fileencoding' ],
+          \               [ 'gitblame', 'currentfunction',  'cocstatus', 'linter_errors', 'linter_warnings' ]]
+          \   },
+          \   'component_expand': {
+          \   },
+          \   'component_type': {
+          \       'readonly': 'error',
+          \       'linter_warnings': 'warning',
+          \       'linter_errors': 'error'
+          \   },
+          \   'component_function': {
+          \       'fileencoding': 'helpers#lightline#fileEncoding',
+          \       'filename': 'helpers#lightline#fileName',
+          \       'fileformat': 'helpers#lightline#fileFormat',
+          \       'filetype': 'helpers#lightline#fileType',
+          \       'gitbranch': 'helpers#lightline#gitBranch',
+          \       'cocstatus': 'coc#status',
+          \       'currentfunction': 'helpers#lightline#currentFunction',
+          \       'gitblame': 'helpers#lightline#gitBlame'
+          \   },
+          \   'tabline': {
+          \       'left': [ [ 'tabs' ] ],
+          \       'right': [ [ 'close' ] ]
+          \   },
+          \   'tab': {
+          \       'active': [ 'filename', 'modified' ],
+          \       'inactive': [ 'filename', 'modified' ],
+          \   },
+          \   'separator': { 'left': '', 'right': '' },
+          \   'subseparator': { 'left': '', 'right': '' }
+      \ }
+" }}}
+
 " General Mappings {{{
     noremap <Up> <NOP>
     noremap <Down> <NOP>
@@ -133,11 +177,11 @@ call plug#begin('~/.config/nvim/plugged')
     inoremap jk <esc>
     
     " shortcut to save
-    nmap <leader>bs :w<cr>
+    nmap <leader><Space> :w<cr>
 
     " tabbing through buffers
-    nmap <leader>bn :bnext<cr>
-    nmap <leader>bp :bprevious<cr>
+    nmap <leader>n :bnext<cr>
+    nmap <leader>p :bprevious<cr>
     
     " set paste toggle
     set pastetoggle=<leader>v
@@ -241,11 +285,6 @@ call plug#begin('~/.config/nvim/plugged')
 " General Functionality {{{
     " better terminal integration
     " Plug 'wincent/terminus'
-
-    " key chord display
-    Plug 'liuchengxu/vim-which-key'
-    " nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-    " set timeoutlen=500
 
     " substitute, search, and abbreviate multiple variants of a word
     Plug 'tpope/vim-abolish'
@@ -553,8 +592,6 @@ call plug#begin('~/.config/nvim/plugged')
         Plug 'mxw/vim-jsx', { 'for': ['javascript.jsx', 'javascript'] }
         Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
         Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-        Plug 'alampros/vim-styled-jsx'
-        Plug 'evanleck/vim-svelte'
     " }}}
     
     " Clojure {{{
@@ -593,9 +630,7 @@ call plug#end()
     " set t_Co=256
 
     syntax enable
-    let g:forest_night_enable_italic = 1
-    let g:forest_night_disable_italic_comment = 1
-    colorscheme nord
+    colorscheme dracula
 
     syntax on
     filetype plugin indent on
@@ -613,4 +648,3 @@ call plug#end()
 " }}}
 
 " vim:set foldmethod=marker foldlevel=0
-source ~/dotfiles/nvim/statusline.vim
